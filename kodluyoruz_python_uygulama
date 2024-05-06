@@ -1,0 +1,175 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "id": "fd5eb475-4d03-4e8d-b750-0e82a0542338",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Minimum mesafe: 1.4142135623730951\n",
+      "Mesafeler: [5.0, 6.082762530298219, 3.605551275463989, 7.280109889280518, 5.830951894845301, 1.4142135623730951, 7.211102550927978, 5.656854249492381, 1.4142135623730951, 7.0710678118654755]\n"
+     ]
+    }
+   ],
+   "source": [
+    "import math\n",
+    "\n",
+    "# Noktaların tanımlanması\n",
+    "points = [(2, 3), (5, 7), (8, 2), (4, 6), (9, 1)]\n",
+    "\n",
+    "# Öklid Mesafesi İçin Bir Fonksiyon Tanımlama\n",
+    "def euclideanDistance(point1, point2):\n",
+    "    \"\"\"\n",
+    "    İki nokta arasındaki öklid mesafesini hesaplar.\n",
+    "    \n",
+    "    Args:\n",
+    "        point1: Birinci noktanın koordinatları, tuple (x1, y1).\n",
+    "        point2: İkinci noktanın koordinatları, tuple (x2, y2).\n",
+    "    \n",
+    "    Returns:\n",
+    "        float: Öklid mesafesi.\n",
+    "    \"\"\"\n",
+    "    x1, y1 = point1\n",
+    "    x2, y2 = point2\n",
+    "    return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)\n",
+    "\n",
+    "# Mesafelerin Hesaplanması\n",
+    "distances = []\n",
+    "for i in range(len(points)):\n",
+    "    for j in range(i+1, len(points)):\n",
+    "        distance = euclideanDistance(points[i], points[j])\n",
+    "        distances.append(distance)\n",
+    "\n",
+    "# Minimum Mesafenin Bulunması\n",
+    "min_distance = min(distances)\n",
+    "\n",
+    "# Sonucu Yazdırma\n",
+    "print(\"Minimum mesafe:\", min_distance)\n",
+    "print(\"Mesafeler:\", distances)\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "id": "9b49d1f5-0872-4b68-be5a-f68133c0faf0",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[5.0, 6.082762530298219, 3.605551275463989, 7.280109889280518, 5.830951894845301, 1.4142135623730951, 7.211102550927978, 5.656854249492381, 1.4142135623730951, 7.0710678118654755]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(distances)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "c1b99bca-419c-4087-8704-8cf35777fc5b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Kaç nokta gireceksiniz?  3\n",
+      "1. noktanın x koordinatını girin:  4\n",
+      "1. noktanın y koordinatını girin:  5\n",
+      "2. noktanın x koordinatını girin:  9\n",
+      "2. noktanın y koordinatını girin:  8\n",
+      "3. noktanın x koordinatını girin:  7\n",
+      "3. noktanın y koordinatını girin:  3\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Minimum mesafe: 3.605551275463989\n",
+      "Mesafeler: [5.830951894845301, 3.605551275463989, 5.385164807134504]\n"
+     ]
+    }
+   ],
+   "source": [
+    "import math\n",
+    "\n",
+    "# Öklid Mesafesi İçin Bir Fonksiyon Tanımlama\n",
+    "def euclideanDistance(point1, point2):\n",
+    "    \"\"\"\n",
+    "    İki nokta arasındaki öklid mesafesini hesaplar.\n",
+    "    \n",
+    "    Args:\n",
+    "        point1: Birinci noktanın koordinatları, tuple (x1, y1).\n",
+    "        point2: İkinci noktanın koordinatları, tuple (x2, y2).\n",
+    "    \n",
+    "    Returns:\n",
+    "        float: Öklid mesafesi.\n",
+    "    \"\"\"\n",
+    "    x1, y1 = point1\n",
+    "    x2, y2 = point2\n",
+    "    return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)\n",
+    "\n",
+    "# Kullanıcıdan noktaların girişini al\n",
+    "points = []\n",
+    "num_points = int(input(\"Kaç nokta gireceksiniz? \"))\n",
+    "\n",
+    "for i in range(num_points):\n",
+    "    x = float(input(\"{}. noktanın x koordinatını girin: \".format(i+1)))\n",
+    "    y = float(input(\"{}. noktanın y koordinatını girin: \".format(i+1)))\n",
+    "    points.append((x, y))\n",
+    "\n",
+    "# Mesafelerin Hesaplanması\n",
+    "distances = []\n",
+    "for i in range(len(points)):\n",
+    "    for j in range(i+1, len(points)):\n",
+    "        distance = euclideanDistance(points[i], points[j])\n",
+    "        distances.append(distance)\n",
+    "\n",
+    "# Minimum Mesafenin Bulunması\n",
+    "min_distance = min(distances)\n",
+    "\n",
+    "# Sonucu Yazdırma\n",
+    "print(\"Minimum mesafe:\", min_distance)\n",
+    "print(\"Mesafeler:\", distances)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "477879d3-e2ae-46c4-8a1d-5d98a889cedc",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
